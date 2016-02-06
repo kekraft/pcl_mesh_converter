@@ -1,0 +1,9 @@
+<launch>
+
+	<node pkg="pcl_mesh_converter" type="pc2_xyz_converter.py" name="pcl_mesh_converter" output="screen">
+		<param name="pointcloud2_topic" value="contamination_points"/>
+		<param name="intermediate_file" value="points_raw.xyz"/>
+		<param name="output_file" value="points_raw.xyz"/>
+	</node>
+
+</launch>
