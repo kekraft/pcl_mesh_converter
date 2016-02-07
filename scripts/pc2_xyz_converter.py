@@ -221,8 +221,8 @@ if __name__ == '__main__':
     
     rospy.init_node('points_to_xyz', anonymous=False)
 
-    pc2_topic = rospy.get_param("~pointcloud2_topic")
-    intermediate_file = rospy.get_param("~intermediate_file")
+    pc2_topic = rospy.get_param("~pointcloud2_topic", '/cloud_in')
+    intermediate_file = rospy.get_param("~intermediate_file", 'points.xyz')
     
     pc2_xyz = PC2_XYZ(pc2_topic, intermediate_file)
 
