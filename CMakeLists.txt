@@ -139,6 +139,14 @@ target_link_libraries(cluster_pointcloud
 )
 add_dependencies(cluster_pointcloud pcl_mesh_converter_gencpp)
 
+## Declare another one
+add_executable(triangulate_pointcloud src/triangulate_pointcloud.cpp)
+target_link_libraries(triangulate_pointcloud
+  ${PCL_LIBRARIES}
+  ${catkin_LIBRARIES}
+)
+add_dependencies(triangulate_pointcloud pcl_mesh_converter_gencpp)
+
 
 #############
 ## Install ##
