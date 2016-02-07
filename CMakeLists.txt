@@ -11,6 +11,8 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
 )
 
+find_package(PCL 1.2 REQUIRED)
+
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
 
@@ -115,6 +117,7 @@ catkin_package(
 ## Your package locations should be listed before other locations
 # include_directories(include)
 include_directories(
+  ${PCL_INCLUDE_DIRS}
   ${catkin_INCLUDE_DIRS}
 )
 
@@ -129,16 +132,13 @@ include_directories(
 # add_dependencies(pcl_mesh_converter ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Declare a C++ executable
-# add_executable(pcl_mesh_converter_node src/pcl_mesh_converter_node.cpp)
+add_executable(cluster_pointcloud src/cluster_pointcloud.cpp)
+target_link_libraries(cluster_pointcloud
+  ${PCL_LIBRARIES}
+  ${catkin_LIBRARIES}
+)
+add_dependencies(cluster_pointcloud pcl_mesh_converter_gencpp)
 
-## Add cmake target dependencies of the executable
-## same as for the library above
-# add_dependencies(pcl_mesh_converter_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-
-## Specify libraries to link a library or executable target against
-# target_link_libraries(pcl_mesh_converter_node
-#   ${catkin_LIBRARIES}
-# )
 
 #############
 ## Install ##
